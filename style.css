@@ -1,0 +1,191 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+:root {
+  --title-font: "Imperial Script", cursive;
+  --main-font: "DM Sans", sans-serif;
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* ! padding left & right removed at 768px screen width & below */
+body {
+  font-size: 16px;
+  background: #181B26;
+  color: #d0d0d0;
+  font-family: var(--main-font);
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+/* ? background PARTICLES */
+#particles-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background: linear-gradient(150deg, #403617, #0E0B26, #000000);
+}
+button {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none; /* Optional: disables text selection */
+  user-select: none;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.container .title {
+  margin: 1.5rem;
+  font-family: var(--title-font);
+  font-weight: 300;
+  font-size: 4rem;
+  letter-spacing: 0.1rem;
+}
+.container .main-content {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 2rem;
+}
+.left img {
+    display: block;
+    height: 450px;
+    width: auto;
+}
+.container .main-content > .right {
+    width : 22rem;
+    height: auto;
+    padding: 1.5rem;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+}
+.right p {
+    font-size: 1.2rem;
+    text-align: justify;
+    font-family: var(--main-font);
+}
+.right button {
+  padding: 0.7rem 0.8rem;
+  font-family: var(--main-font);
+  letter-spacing: 2px;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  background: #ffffff1a;
+  backdrop-filter: blur(4px);
+  color: #d0d0d0;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.1s linear;
+  border: 1px outset #8383834d;
+  transition: background 0.3s linear;
+}
+
+/* ? THE BUTTONS */
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 0 2rem;
+  flex-wrap: wrap;
+}
+
+.right button {
+  background: #ffcb2f1c;
+}
+
+.right button:hover {
+  background: #e9b36869;
+}
+
+.right button:active {
+  border: 1px inset #8383834d;
+  filter: brightness(0.9);
+}
+
+.sound-toggle-icon {
+  position: absolute;
+  top: 0px;
+  right: 12px;
+  z-index: 10;
+  backdrop-filter: blur(2px);
+  background: #ffffff1a;
+  border-radius: 50%;
+  padding: 5px;
+  box-shadow: 0 2px 8px #00000014;
+  border: 1px outset #a1a1a133;
+  transition: all 0.1s linear;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.sound-toggle-icon:hover {
+  filter: brightness(1.2);
+}
+
+.sound-toggle-icon:active {
+  border: 1px inset #a1a1a133;
+  filter: brightness(1);
+}
+
+.sound-toggle-icon img {
+  display: block;
+  width: 24px;
+  height: 24px;
+  filter: brightness(0.85);
+  cursor: pointer;
+  transition: all 0.1s linear;
+}
+
+/* Target the scrollbar */
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+/* Track (background of the scrollbar) */
+::-webkit-scrollbar-track {
+    background: #181B26;
+    border-radius: 10px;
+}
+
+/* Handle (the draggable part of the scrollbar) */
+::-webkit-scrollbar-thumb {
+    background: #40361780;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #403617b3;
+}
+
+/* where both scrollbars meet */
+::-webkit-scrollbar-corner {
+    background: #181B26;
+}
