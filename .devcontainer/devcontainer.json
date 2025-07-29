@@ -1,10 +1,1 @@
-{
-  "image": "mcr.microsoft.com/devcontainers/universal:2-linux",
-  "customizations": {
-    "vscode": {
-      "extensions": ["msjsdiag.vscode-react-native"]
-    }
-  },
-  "forwardPorts": [8081], // Metro bundler port
-  "postCreateCommand": "npm install"
-}
+
