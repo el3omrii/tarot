@@ -1,6 +1,6 @@
 document.getElementById("startButton").addEventListener('click', () => {
   const card = document.getElementById("startCard");
-  card.classList.add('flipped');
+  card.classList.toggle('flipped');
 })
 
 // PARTICLES
