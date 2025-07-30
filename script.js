@@ -1,3 +1,8 @@
+document.getElementById("startButton").addEventListener('click', () => {
+  const card = document.getElementById("startCard");
+  card.classList.add('flipped');
+})
+
 // PARTICLES
 particlesJS("particles-js", {
   particles: {

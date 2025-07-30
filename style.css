@@ -5,9 +5,19 @@
   scroll-behavior: smooth;
 }
 
+a {
+    display: inline-block;
+    cursor: pointer;
+    color: inherit;
+    text-decoration: none;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+}
+
 :root {
   --title-font: "Imperial Script", cursive;
   --main-font: "DM Sans", sans-serif;
+  --xs-font: 1rem;
 }
 
 html,
@@ -105,6 +115,76 @@ button {
   transition: background 0.3s linear;
 }
 
+.card-container {
+    margin: 14px;
+    text-align: center;
+    padding: 16px 12px;
+    -webkit-box-shadow: 1px 2px 16px rgba(0, 0, 0, 0.1);
+    box-shadow: 1px 2px 16px rgba(0, 0, 0, 0.1);
+    background-color: #eee;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.card-icon {
+    width: 80px;
+}
+.card-container h2 {
+    font-size: 24px;
+    padding-top: 0.25em;
+    letter-spacing: 0.006em;
+    color: #000;
+}
+.right .card {
+  width: 100%;
+  height: auto;
+  perspective: 100rem;
+}
+
+.card .card-inner {
+  width: 100%;
+  height: 25rem;
+  transition: 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+  border-radius: 10px;
+}
+
+.card-inner.flipped {
+  transform: rotateY(180deg);
+}
+.card-front,
+.card-back {
+  color: var(--color-black);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backface-visibility: hidden;
+  border-radius: 2rem;
+}
+
+.card-front {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color-primary);
+  border-radius: 1rem;
+  border: solid 1rem var(--color-primary-light);
+}
+.card-back {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 2rem;
+  background-color: var(--color-primary-light);
+  color: var(--color-black);
+  transform: rotateY(180deg);
+  padding: 0 3rem 0 3rem;
+}
 /* ? THE BUTTONS */
 .button-group {
   display: flex;
