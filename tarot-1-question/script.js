@@ -19,18 +19,17 @@ const cardImages = [
 function renderDeck() {
   deck.innerHTML = "";
   //shuffle(cardImages);
-  cardImages.forEach((imgSrc) => {
+  cardImages.forEach((imgSrc, i) => {
     const card = document.createElement("div");
     card.classList.add("card");
-
-    const isReversed = Math.random() < 0.5;
+    card.style.opacity = "0";
+    //card.style.transform = "scale(1)";
 
     card.innerHTML = `
       <div class="card-inner">
         <div class="card-back"></div>
-        <div class="card-front ${
-          isReversed ? "reversed" : ""
-        }" style="background-image: url('../cards/${imgSrc}')"></div>
+        <div class="card-front"
+         style="background-image: url('../cards/${imgSrc}')"></div>
       </div>
     `;
     // Add click sound effect
@@ -54,6 +53,28 @@ function renderDeck() {
       card.classList.add("flipped");
     });
     deck.appendChild(card);
+    // Animation GSAP : apparition en cascade
+    // Calcul du centre du deck
+    const deckRect = deck.getBoundingClientRect();
+    const cardRect = card.getBoundingClientRect();
+    const deckCenterX = deckRect.left + deckRect.width / 2;
+    const cardCenterX = cardRect.left + cardRect.width / 2;
+    const offsetX = deckCenterX - cardCenterX;
+
+    gsap.fromTo(card, { opacity: 0, y: 200, x: offsetX, scale: 0.9},
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        delay: i * 0.2,
+        duration: 0.7,
+        ease: "bounce.out",
+        onComplete: () => {
+          card.style.transform = ""; // Supprime le style inline transform
+          card.style.scale = ""; // Supprime le style inline transform
+        }
+      }
+    );
   });
 }
 // Initial render of the deck

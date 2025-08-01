@@ -78,20 +78,21 @@ button {
     gap: 2rem;
 }
 /* ? THE DECK SPREAD */
-.deck {
-  min-height: 100vh;
+#deck {
+  --cards: 12;
+  --curvature: 72deg;
   position: relative;
-
+  width: 100%
+  margin-top: 2rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   max-width: 1080px;
-  margin: 1.5rem auto;
-  gap: 1rem;
+  margin: 4rem auto 0;
   padding-left: 6rem;
   padding-right: 0;
+  transform-style: preserve-3d;
   /* No gap so cards overlap */
-  position: relative;
 }
 
 .card {
@@ -104,16 +105,32 @@ button {
   margin: 0.5rem;
   cursor: pointer;
   position: relative;
-
+  transition: transform 0.25s cubic-bezier(0.4, 0.2, 0.2, 1), filter 0.2s;
   flex: 0 0 auto;
   margin-left: -88px;
   margin-bottom: -70px;
-  z-index: 1;
-
+  
   -webkit-tap-highlight-color: transparent;
   -webkit-user-select: none;
   user-select: none;
 }
+#deck > .card {
+  --curve: calc(var(--curvature) * ((var(--index) - (var(--cards) - 1) / 2) / var(--cards)));
+  transform-origin: 50% 100%;
+  transform: rotate(var(--curve));
+}
+#deck .card:nth-child(1) { --index: 0; } 
+#deck .card:nth-child(2) { --index: 1; } 
+#deck .card:nth-child(3) { --index: 2; } 
+#deck .card:nth-child(4) { --index: 3; } 
+#deck .card:nth-child(5) { --index: 4; } 
+#deck .card:nth-child(6) { --index: 5; } 
+#deck .card:nth-child(7) { --index: 6; } 
+#deck .card:nth-child(8) { --index: 7; } 
+#deck .card:nth-child(9) { --index: 8; } 
+#deck .card:nth-child(10) { --index: 9; } 
+#deck .card:nth-child(11) { --index: 10; } 
+#deck .card:nth-child(12) { --index: 11; } 
 
 .card::before {
   content: '';
@@ -131,8 +148,10 @@ button {
 
 .card:hover {
   filter: brightness(1.25);
-  transform: scale(1.05);
+  transform: scale(1.3)translateY(-40px) !important ;
   transition: all 0.2s ease;
+  z-index: 2;
+  animation: hoverEffect 1s ease-in-out infinite alternate forwards;
 }
 
 .card-inner {
@@ -236,4 +255,10 @@ button {
 /* where both scrollbars meet */
 ::-webkit-scrollbar-corner {
     background: #181B26;
+}
+
+@keyframes hoverEffect {
+	to {
+		translate: 0px 12px;
+	}
 }
