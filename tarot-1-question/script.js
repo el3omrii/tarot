@@ -160,6 +160,10 @@ function renderDeck() {
       }
       // If not flipped, flip the card
       card.classList.add("flipped");
+      const imgSrc = cardFront.style.backgroundImage.slice(5, -2);
+      const isReversed = cardFront.classList.contains("reversed");
+      
+      setTimeout(() => openModal(imgSrc, isReversed), 500);
     });
     deck.appendChild(card);
     // Animation GSAP : apparition en cascade
@@ -182,6 +186,67 @@ function renderDeck() {
     );
   });
 }
+
+// Modal functionality
+const modal = document.getElementById("modal");
+const modalImg = document.getElementById("modal-image");
+const closeBtn = document.querySelector(".close-button");
+
+// This function opens the modal with the selected card image and its meanings.
+function openModal(imgSrc, isReversed = false) {
+  modalImg.src = imgSrc;
+  modal.classList.remove("hidden");
+  document.body.classList.add("modal-open");
+
+  // Extract card filename
+  const cardFile = imgSrc.split("/").pop();
+  const meaning = cardMeanings[cardFile];
+
+  // Set card name and meanings
+  const cardNameElem = document.getElementById("card-name");
+  const uprightElem = document.getElementById("meaning-upright");
+  const reversedElem = document.getElementById("meaning-reversed");
+  const adviceElem = document.getElementById("card-advice");
+
+  if (meaning) {
+    cardNameElem.textContent = meaning.name;
+    uprightElem.textContent = isReversed ? "" : meaning.upright;
+    reversedElem.textContent = isReversed ? meaning.reversed : "";
+    uprightElem.style.display = isReversed ? "none" : "block";
+    reversedElem.style.display = isReversed ? "block" : "none";
+    adviceElem.textContent = isReversed ? meaning.advice.reversed : meaning.advice.upright;
+    adviceElem.style.display = "block";
+  } else {
+    cardNameElem.textContent = "";
+    uprightElem.textContent = "";
+    reversedElem.textContent = "";
+    uprightElem.style.display = "none";
+    reversedElem.style.display = "none";
+    adviceElem.textContent = "";
+    adviceElem.style.display = "none";
+  }
+
+  // Animate image
+  modalImg.classList.remove("animate");
+  void modalImg.offsetWidth;
+  modalImg.classList.add("animate");
+}
+
+function closeModal() {
+  modal.classList.add("hidden");
+  modalImg.src = "";
+  document.body.classList.remove("modal-open"); // Show footer
+}
+
+// Click outside or on button to close
+modal.addEventListener("click", (e) => {
+  if (e.target === modal) {
+    closeModal();
+  } 
+  else if (e.target === closeBtn) {
+    closeModal();
+  }
+});
 
 // Sound toggle logic
 const soundToggleIcon = document.getElementById("sound-toggle-icon");
