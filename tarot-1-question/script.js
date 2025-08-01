@@ -15,6 +15,13 @@ const cardImages = [
   "10-WheelOfFortune.webp",
   "11-Justice.webp",
 ];
+// This function uses the Fisher-Yates algorithm to shuffle the array in place.
+function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
 // this function creates a fake deck of cards for the initial loading animation
 function fakeDeck() {
   const deck = document.getElementById("fake-deck");
@@ -120,7 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // This function renders the deck of cards, shuffling them and creating card elements.
 function renderDeck() {
   deck.innerHTML = "";
-  //shuffle(cardImages);
+  shuffle(cardImages);
   cardImages.forEach((imgSrc, i) => {
     const card = document.createElement("div");
     card.classList.add("card");
@@ -168,6 +175,8 @@ function renderDeck() {
         onComplete: () => {
           card.style.transform = ""; // Supprime le style inline transform
           card.style.scale = ""; // Supprime le style inline transform
+          card.style.rotate = ""; // Supprime le style inline transform
+          card.style.translate = ""; // Supprime le style inline transform
         }
       }
     );

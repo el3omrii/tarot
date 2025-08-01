@@ -133,9 +133,10 @@ button {
 #deck .card:nth-child(12) { --index: 11; } 
 
 
+
 #deck .card:hover {
   filter: brightness(1.25);
-  transform: translateY(-200%) scale(1.3);
+  transform: rotate(var(--curve)) translateY(calc(-225% - 40px)) scale(1.3);
   transition: all 0.2s ease;
   z-index: 2;
   animation: hoverEffect 1s ease-in-out infinite alternate forwards;
