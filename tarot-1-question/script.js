@@ -1,6 +1,20 @@
+let flipCount = 0;
 const deck = document.getElementById("deck");
 // Array of card image paths
 const cardImages = [
+  // Major Arcana
+  "00-TheFool.webp",
+  "01-TheMagician.webp",
+  "02-TheHighPriestess.webp",
+  "03-TheEmpress.webp",
+  "04-TheEmperor.webp",
+  "05-TheHierophant.webp",
+  "06-TheLovers.webp",
+  "07-TheChariot.webp",
+  "08-Strength.webp",
+  "09-TheHermit.webp",
+  "10-WheelOfFortune.webp",
+  "11-Justice.webp",
   // Major Arcana
   "00-TheFool.webp",
   "01-TheMagician.webp",
@@ -128,6 +142,8 @@ document.addEventListener("DOMContentLoaded", () => {
 function renderDeck() {
   deck.innerHTML = "";
   shuffle(cardImages);
+  let cardDrawn = false; // Pour savoir si une carte a déjà été tirée
+
   cardImages.forEach((imgSrc, i) => {
     const card = document.createElement("div");
     card.classList.add("card");
@@ -143,27 +159,42 @@ function renderDeck() {
     `;
     // Add click sound effect
     card.addEventListener("click", () => {
-      // ? Play card flip sound IMMEDIATELY on any click
+      // Si une carte a déjà été tirée
+      if (cardDrawn) {      
+        // If card is already flipped, open modal with image
+        if (card.classList.contains("flipped")) {
+          const cardFront = card.querySelector(".card-front");
+          const imgSrc = cardFront.style.backgroundImage.slice(5, -2);
+          const isReversed = cardFront.classList.contains("reversed");
+          openModal(imgSrc, isReversed);
+        }
+          return;
+      }
+      // If not flipped, flip the card
+      card.classList.add("flipped");
+      cardDrawn = true;
+      // Désactive toutes les autres cartes
+      document.querySelectorAll("#deck .card").forEach(c => {
+        if (c !== card) {
+          c.classList.add("inactive");
+          c.style.pointerEvents = "none";
+        } else {
+          c.classList.remove("inactive");
+          c.style.pointerEvents = "auto";
+        }
+      });
+      // Effet sonore
       const flipAudio = document.getElementById("card-flip-audio");
       if (flipAudio && soundEnabled) {
         flipAudio.volume = 0.8;
         flipAudio.currentTime = 0;
         flipAudio.play();
       }
-      // If card is already flipped, open modal with image
-      if (card.classList.contains("flipped")) {
-        const cardFront = card.querySelector(".card-front");
-        const imgSrc = cardFront.style.backgroundImage.slice(5, -2);
-        const isReversed = cardFront.classList.contains("reversed");
-        openModal(imgSrc, isReversed);
-        return;
-      }
-      // If not flipped, flip the card
-      card.classList.add("flipped");
+      const cardFront = card.querySelector(".card-front");
       const imgSrc = cardFront.style.backgroundImage.slice(5, -2);
-      const isReversed = cardFront.classList.contains("reversed");
-      
-      setTimeout(() => openModal(imgSrc, isReversed), 500);
+  
+      setTimeout(() => openModal(imgSrc), 2000);
+
     });
     deck.appendChild(card);
     // Animation GSAP : apparition en cascade
