@@ -159,31 +159,24 @@ function renderDeck() {
     `;
     // Add click sound effect
     card.addEventListener("click", () => {
-      // Si une carte a déjà été tirée
-      if (cardDrawn) {      
-        // If card is already flipped, open modal with image
-        if (card.classList.contains("flipped")) {
-          const cardFront = card.querySelector(".card-front");
-          const imgSrc = cardFront.style.backgroundImage.slice(5, -2);
-          const isReversed = cardFront.classList.contains("reversed");
-          openModal(imgSrc, isReversed);
-        }
-          return;
+      // If card is already flipped, open modal with image
+      if (card.classList.contains("flipped")) {
+        const cardFront = card.querySelector(".card-front");
+        const imgSrc = cardFront.style.backgroundImage.slice(5, -2);
+        const isReversed = cardFront.classList.contains("reversed");
+        openModal(imgSrc, isReversed);
+        return;
       }
       // If not flipped, flip the card
       card.classList.add("flipped");
-      cardDrawn = true; 
-      // Désactive toutes les autres cartes
-      document.querySelectorAll("#deck .card").forEach(c => {
-        if (c !== card) {
-          c.classList.add("inactive");
-          c.style.pointerEvents = "none";
-        } else {
-           c.classList.remove("inactive");
-           c.style.pointerEvents = "auto";
-        }
-      });
-    
+      flipCount++;
+      const label = document.createElement("span");
+      label.classList.add("card-number");
+      label.textContent = flipCount;
+
+      const cardFront = card.querySelector(".card-front");
+      cardFront.appendChild(label);
+      
       // Effet sonore
       const flipAudio = document.getElementById("card-flip-audio");
       if (flipAudio && soundEnabled) {
@@ -191,11 +184,18 @@ function renderDeck() {
         flipAudio.currentTime = 0;
         flipAudio.play();
       }
-      const cardFront = card.querySelector(".card-front");
+      
       const imgSrc = cardFront.style.backgroundImage.slice(5, -2);
   
       setTimeout(() => openModal(imgSrc), 2000);
 
+      //disable all cards
+      if(flipCount == 3) {
+      document.querySelectorAll("#deck .card").forEach(c => {
+          c.classList.add("inactive");
+          c.style.pointerEvents = "none";
+      });
+     }
     });
     deck.appendChild(card);
     // Animation GSAP : apparition en cascade
