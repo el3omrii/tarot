@@ -12,7 +12,7 @@ const cardImages = [
   "06-TheLovers.webp",
   "07-TheChariot.webp",
   "08-Strength.webp",
-  "09-TheHermit.webp",
+  //"09-TheHermit.webp",
   "10-WheelOfFortune.webp",
   "11-Justice.webp",
   // Major Arcana
@@ -26,8 +26,21 @@ const cardImages = [
   "07-TheChariot.webp",
   "08-Strength.webp",
   "09-TheHermit.webp",
-  "10-WheelOfFortune.webp",
+  //"10-WheelOfFortune.webp",
   "11-Justice.webp",
+  // Major Arcana
+  "00-TheFool.webp",
+  "01-TheMagician.webp",
+  "02-TheHighPriestess.webp",
+  "03-TheEmpress.webp",
+  "04-TheEmperor.webp",
+  "05-TheHierophant.webp",
+  "06-TheLovers.webp",
+  "07-TheChariot.webp",
+  "08-Strength.webp",
+  "09-TheHermit.webp",
+  "10-WheelOfFortune.webp",
+  //"11-Justice.webp",
 ];
 // This function uses the Fisher-Yates algorithm to shuffle the array in place.
 function shuffle(array) {
@@ -310,6 +323,129 @@ function updateSoundIcon() {
     soundIconImg.alt = "Sound Off";
   }
 }
+
+//Card meanings
+// Card meanings data
+const cardMeanings = {
+  // Major Arcana
+  "00-TheFool.webp": {
+    name: "The Fool",
+    upright: "Beginnings, innocence, spontaneity, a free spirit.",
+    reversed: "Holding back, recklessness, risk-taking.",
+    advice: {
+      upright: "Embrace new opportunities with an open mind and heart.",
+      reversed: "Pause and consider the risks before acting impulsively.",
+    },
+  },
+  "01-TheMagician.webp": {
+    name: "The Magician",
+    upright: "Manifestation, resourcefulness, power, inspired action.",
+    reversed: "Manipulation, poor planning, untapped talents.",
+    advice: {
+      upright: "Use your skills and willpower to manifest your goals.",
+      reversed: "Focus your energy and avoid manipulation.",
+    },
+  },
+  "02-TheHighPriestess.webp": {
+    name: "The High Priestess",
+    upright: "Intuition, sacred knowledge, divine feminine.",
+    reversed: "Secrets, disconnected from intuition, withdrawal.",
+    advice: {
+      upright: "Trust your intuition and seek inner wisdom.",
+      reversed: "Reconnect with your inner voice and reflect.",
+    },
+  },
+  "03-TheEmpress.webp": {
+    name: "The Empress",
+    upright: "Femininity, beauty, nature, nurturing, abundance.",
+    reversed: "Creative block, dependence on others.",
+    advice: {
+      upright: "Nurture yourself and others; embrace creativity.",
+      reversed: "Find your own strength and creativity.",
+    },
+  },
+  "04-TheEmperor.webp": {
+    name: "The Emperor",
+    upright: "Authority, structure, control, fatherhood.",
+    reversed: "Domination, excessive control, rigidity.",
+    advice: {
+      upright: "Take control and lead with confidence.",
+      reversed: "Be flexible and avoid being overly controlling.",
+    },
+  },
+  "05-TheHierophant.webp": {
+    name: "The Hierophant",
+    upright: "Tradition, conformity, morality, ethics.",
+    reversed: "Rebellion, subversiveness, new approaches.",
+    advice: {
+      upright: "Seek guidance from tradition or a mentor.",
+      reversed: "Consider new perspectives and question tradition.",
+    },
+  },
+  "06-TheLovers.webp": {
+    name: "The Lovers",
+    upright: "Love, harmony, relationships, values alignment.",
+    reversed: "Imbalance, misalignment of values, disharmony.",
+    advice: {
+      upright: "Make choices aligned with your values.",
+      reversed: "Restore balance and communicate openly.",
+    },
+  },
+  "07-TheChariot.webp": {
+    name: "The Chariot",
+    upright: "Control, willpower, success, determination.",
+    reversed: "Lack of control, aggression, self-doubt.",
+    advice: {
+      upright: "Stay focused and drive forward with confidence.",
+      reversed: "Regain control and avoid rash actions.",
+    },
+  },
+  "08-Strength.webp": {
+    name: "Strength",
+    upright: "Courage, persuasion, influence, compassion.",
+    reversed: "Self-doubt, weakness, insecurity.",
+    advice: {
+      upright: "Face challenges with compassion and resolve.",
+      reversed: "Believe in yourself and your abilities.",
+    },
+  },
+  "09-TheHermit.webp": {
+    name: "The Hermit",
+    upright: "Soul-searching, introspection, being alone.",
+    reversed: "Isolation, loneliness, withdrawal.",
+    advice: {
+      upright: "Take time for introspection and seek inner truth.",
+      reversed: "Reconnect with others and share your wisdom.",
+    },
+  },
+  "10-WheelOfFortune.webp": {
+    name: "Wheel of Fortune",
+    upright: "Good luck, karma, life cycles, destiny.",
+    reversed: "Bad luck, resistance to change, breaking cycles.",
+    advice: {
+      upright: "Embrace change and trust the cycles of life.",
+      reversed: "Let go of resistance and accept change.",
+    },
+  },
+  "11-Justice.webp": {
+    name: "Justice",
+    upright: "Justice, fairness, truth, law.",
+    reversed: "Unfairness, lack of accountability, dishonesty.",
+    advice: {
+      upright: "Act with integrity and seek balance.",
+      reversed: "Take responsibility and correct injustices.",
+    },
+  },
+  "12-TheHangedMan.webp": {
+    name: "The Hanged Man",
+    upright: "Pause, surrender, letting go, new perspectives.",
+    reversed: "Delays, resistance, stalling.",
+    advice: {
+      upright: "Let go and see things from a different angle.",
+      reversed: "Release resistance and allow change.",
+    },
+  }
+};
 
 // PARTICLES
 particlesJS("particles-js", {
