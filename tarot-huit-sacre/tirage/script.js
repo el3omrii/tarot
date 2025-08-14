@@ -3,44 +3,39 @@ const deck = document.getElementById("deck");
 // Array of card image paths
 const cardImages = [
   // Major Arcana
-  "00-TheFool.webp",
-  "01-TheMagician.webp",
-  "02-TheHighPriestess.webp",
-  "03-TheEmpress.webp",
-  "04-TheEmperor.webp",
-  "05-TheHierophant.webp",
-  "06-TheLovers.webp",
-  "07-TheChariot.webp",
-  "08-Strength.webp",
-  //"09-TheHermit.webp",
-  "10-WheelOfFortune.webp",
-  "11-Justice.webp",
-  // Major Arcana
-  "00-TheFool.webp",
-  "01-TheMagician.webp",
-  "02-TheHighPriestess.webp",
-  "03-TheEmpress.webp",
-  "04-TheEmperor.webp",
-  "05-TheHierophant.webp",
-  "06-TheLovers.webp",
-  "07-TheChariot.webp",
-  "08-Strength.webp",
-  "09-TheHermit.webp",
-  //"10-WheelOfFortune.webp",
-  "11-Justice.webp",
-  // Major Arcana
-  "00-TheFool.webp",
-  "01-TheMagician.webp",
-  "02-TheHighPriestess.webp",
-  "03-TheEmpress.webp",
-  "04-TheEmperor.webp",
-  "05-TheHierophant.webp",
-  "06-TheLovers.webp",
-  "07-TheChariot.webp",
-  "08-Strength.webp",
-  "09-TheHermit.webp",
-  "10-WheelOfFortune.webp",
-  //"11-Justice.webp",
+  "01.jpg",
+  "02.jpg",
+  "03.jpg",
+  "04.jpg",
+  "05.jpg",
+  "06.jpg",
+  "07.jpg",
+  "08.jpg",
+  "09.jpg",
+  "10.jpg",
+  "11.jpg",
+  "12.jpg",
+  "13.jpg",
+  "14.jpg",
+  "15.jpg",
+  "16.jpg",
+  "17.jpg",
+  "18.jpg",
+  "19.jpg",
+  "20.jpg",
+  "21.jpg",
+  "22.jpg",
+  "23.jpg",
+  "24.jpg",
+  "25.jpg",
+  "26.jpg",
+  "27.jpg",
+  "28.jpg",
+  "29.jpg",
+  "30.jpg",
+  "31.jpg",
+  "32.jpg",
+  "33.jpg"   
 ];
 // This function uses the Fisher-Yates algorithm to shuffle the array in place.
 function shuffle(array) {
@@ -167,7 +162,7 @@ function renderDeck() {
       <div class="card-inner">
         <div class="card-back"></div>
         <div class="card-front"
-         style="background-image: url('../cards/${imgSrc}')"></div>
+         style="background-image: url('../../cards/${imgSrc}')"></div>
       </div>
     `;
     // Add click sound effect
@@ -249,26 +244,22 @@ function openModal(imgSrc, isReversed = false) {
 
   // Set card name and meanings
   const cardNameElem = document.getElementById("card-name");
-  const uprightElem = document.getElementById("meaning-upright");
-  const reversedElem = document.getElementById("meaning-reversed");
-  const adviceElem = document.getElementById("card-advice");
+  const actionElem = document.getElementById("meaning-action");
+  const prayerElem = document.getElementById("meaning-prayer");
 
   if (meaning) {
     cardNameElem.textContent = meaning.name;
-    uprightElem.textContent = isReversed ? "" : meaning.upright;
-    reversedElem.textContent = isReversed ? meaning.reversed : "";
-    uprightElem.style.display = isReversed ? "none" : "block";
-    reversedElem.style.display = isReversed ? "block" : "none";
-    adviceElem.textContent = isReversed ? meaning.advice.reversed : meaning.advice.upright;
-    adviceElem.style.display = "block";
+    actionElem.textContent = meaning.action;
+    actionElem.style.display = "block";
+
+    prayerElem.textContent = meaning.prayer;
+    prayerElem.style.display = "block";
   } else {
-    cardNameElem.textContent = "";
-    uprightElem.textContent = "";
-    reversedElem.textContent = "";
-    uprightElem.style.display = "none";
-    reversedElem.style.display = "none";
-    adviceElem.textContent = "";
-    adviceElem.style.display = "none";
+    actionElem.textContent = "";
+    actionElem.style.display = "none";
+
+    prayerElem.textContent = "";
+    prayerElem.style.display = "none";
   }
 
   // Animate image
@@ -298,8 +289,8 @@ const soundToggleIcon = document.getElementById("sound-toggle-icon");
 const soundIconImg = document.getElementById("sound-icon-img");
 let soundEnabled = true;
 // Sound icons
-const SOUND_ON_ICON = "../assets/sound-on.svg";
-const SOUND_OFF_ICON = "../assets/sound-off.svg";
+const SOUND_ON_ICON = "../../assets/sound-on.svg";
+const SOUND_OFF_ICON = "../../assets/sound-off.svg";
 
 // Load preference from localStorage if available
 if (localStorage.getItem("mysticDrawSound") !== null) {

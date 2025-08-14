@@ -1,0 +1,418 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+a {
+    display: inline-block;
+    cursor: pointer;
+    color: inherit;
+    text-decoration: none;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+}
+
+:root {
+  --title-font: "Imperial Script", cursive;
+  --main-font: "DM Sans", sans-serif;
+  --xs-font: 1rem;
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* ! padding left & right removed at 768px screen width & below */
+body {
+  font-size: 16px;
+  background: #181B26;
+  color: #d0d0d0;
+  font-family: var(--main-font);
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+/* ? background PARTICLES */
+#particles-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background: linear-gradient(150deg, #403617, #0E0B26, #000000);
+}
+button {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none; /* Optional: disables text selection */
+  user-select: none;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.container .title {
+  margin: 1.5rem;
+  font-family: var(--title-font);
+  font-weight: 300;
+  font-size: 4rem;
+  letter-spacing: 0.1rem;
+}
+.container .main-content {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 2rem;
+}
+/* ? THE DECK SPREAD */
+#deck {
+  --cards: 33;
+  --curvature: 360deg;
+  position: relative;
+  width: 100%;
+  height: 500px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1080px;
+  margin: 1rem auto 0;
+  padding-left: 6rem;
+  padding-right: 0;
+  transform-style: preserve-3d;
+}
+
+#deck .card {
+  width: 20vw;
+  max-width: 130px;
+  min-width: 110px;
+  aspect-ratio: 3.5 / 5;
+  /* Keeps card proportions */
+  perspective: 1000px;
+  margin: 0.5rem;
+  cursor: pointer;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transition: transform 0.25s cubic-bezier(0.4, 0.2, 0.2, 1), filter 0.2s;
+  margin-left: -88px;
+  margin-bottom: -70px;
+  
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  user-select: none;
+}
+#deck > .card {
+  --angle: calc(360deg / var(--cards) * var(--index));
+  --curve: calc(var(--curvature) * ((var(--index) - (var(--cards) - 1) / 2) / var(--cards)));
+  transform-origin: 50% 220px;
+  transform:
+    rotate(var(--angle))
+    translateY(-220px) /* même valeur que transform-origin Y */
+}
+#deck .card:nth-child(1) { --index: 0; } 
+#deck .card:nth-child(2) { --index: 1; } 
+#deck .card:nth-child(3) { --index: 2; } 
+#deck .card:nth-child(4) { --index: 3; } 
+#deck .card:nth-child(5) { --index: 4; } 
+#deck .card:nth-child(6) { --index: 5; } 
+#deck .card:nth-child(7) { --index: 6; } 
+#deck .card:nth-child(8) { --index: 7; } 
+#deck .card:nth-child(9) { --index: 8; } 
+#deck .card:nth-child(10) { --index: 9; } 
+#deck .card:nth-child(11) { --index: 10; } 
+#deck .card:nth-child(12) { --index: 11; } 
+#deck .card:nth-child(13) { --index: 12; } 
+#deck .card:nth-child(14) { --index: 13; } 
+#deck .card:nth-child(15) { --index: 14; } 
+#deck .card:nth-child(16) { --index: 15; } 
+#deck .card:nth-child(17) { --index: 16; } 
+#deck .card:nth-child(18) { --index: 17; } 
+#deck .card:nth-child(19) { --index: 18; } 
+#deck .card:nth-child(20) { --index: 19; } 
+#deck .card:nth-child(21) { --index: 20; } 
+#deck .card:nth-child(22) { --index: 21; } 
+#deck .card:nth-child(23) { --index: 22; } 
+#deck .card:nth-child(24) { --index: 23; } 
+#deck .card:nth-child(25) { --index: 24; } 
+#deck .card:nth-child(26) { --index: 25; } 
+#deck .card:nth-child(27) { --index: 26; } 
+#deck .card:nth-child(28) { --index: 27; } 
+#deck .card:nth-child(29) { --index: 28; } 
+#deck .card:nth-child(30) { --index: 29; } 
+#deck .card:nth-child(31) { --index: 30; } 
+#deck .card:nth-child(32) { --index: 31; } 
+#deck .card:nth-child(33) { --index: 32; } 
+
+
+#deck .card:hover, #deck .card.flipped {
+  filter: brightness(1.25);
+  transform: rotate(var(--angle)) translateY(calc(-220px - 40px)) scale(1.3);
+  transition: all 0.2s ease;
+  z-index: 2;
+  animation: hoverEffect 1s ease-in-out infinite alternate forwards;
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  backface-visibility: hidden;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.card-front {
+  position: relative;
+  background-size: 100% 100%;
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+  /* flipped default (without reversal) */
+  border: 1px solid #070707;
+}
+
+.card-front.reversed {
+  transform: rotateY(180deg) rotate(180deg);
+  /* flipped + reversed */
+}
+
+.card-back {
+  background: url('../../cards/backcard.png') center/cover;
+}
+#fake-deck {
+  display: grid;
+  grid-template-areas: "cards";
+  justify-content: center;
+  margin: 10rem auto 0;
+}
+#fake-deck .card {
+  grid-area: cards;
+  display: flex;
+  width: 23vmin;
+  aspect-ratio: 2.5/3.5;
+  border-radius: 2.5vmin;
+  border: 0.2vmin solid hsl(0 0% 0% / 0.25);
+  will-change: transform;
+  background: url('../../cards/backcard.png') center/cover;
+}
+
+.sound-toggle-icon {
+  position: absolute;
+  top: 0px;
+  right: 12px;
+  z-index: 10;
+  backdrop-filter: blur(2px);
+  background: #ffffff1a;
+  border-radius: 50%;
+  padding: 5px;
+  box-shadow: 0 2px 8px #00000014;
+  border: 1px outset #a1a1a133;
+  transition: all 0.1s linear;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.sound-toggle-icon:hover {
+  filter: brightness(1.2);
+}
+
+.sound-toggle-icon:active {
+  border: 1px inset #a1a1a133;
+  filter: brightness(1);
+}
+
+.sound-toggle-icon img {
+  display: block;
+  width: 24px;
+  height: 24px;
+  filter: brightness(0.85);
+  cursor: pointer;
+  transition: all 0.1s linear;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0f0f0fe6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  transition: all 0.3s ease;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  position: relative;
+  border: 1px solid #4036177a;
+
+  backdrop-filter: blur(20px);
+  background: linear-gradient(150deg, #403617b3, #0e0b26b3, #403617b3);
+  -webkit-backdrop-filter: blur(10px);
+
+  padding: 1.1rem;
+  border-radius: 12px;
+  box-shadow: 0 0 16px #000000b3;
+  max-width: 90vw;
+  max-height: 100vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1.5rem;
+  animation: flipZoomIn 0.6s ease forwards;
+  transform-style: preserve-3d;
+}
+
+.modal-content img {
+  max-width: 220px;
+  max-height: 80vh;
+  border-radius: 8px;
+  display: block;
+  /* Remove animation from image, keep for backward compatibility */
+  animation: none;
+}
+
+.card-meaning {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  max-width: 350px;
+  min-width: 200px;
+  text-align: left;
+  gap: 1rem;
+}
+
+#card-name {
+  font-family: var(--title-font);
+  color: #e9b368;
+  font-weight: 300;
+  font-size: 2.5rem;
+  letter-spacing: 0.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.meaning-action,
+.meaning-prayer {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.meaning-action::before {
+  content: "Action: ";
+  color: #e9b368;
+}
+.meaning-prayer::before {
+  content: "Prière: ";
+  color: #e9b368;
+}
+
+
+.card-advice {
+  font-style: italic;
+  color: #e9b368;
+  text-align: left;
+}
+
+/* ? MODAL CLOSE BUTTON */
+.close-button {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  font-size: 28px;
+  color: #aaaaaa;
+  cursor: pointer;
+  z-index: 999;
+  transition: all 0.1s linear;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.close-button:hover {
+  color: #888888;
+}
+
+.close-button:active {
+  color: #6d6d6d;
+}
+/* Target the scrollbar */
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+/* Track (background of the scrollbar) */
+::-webkit-scrollbar-track {
+    background: #181B26;
+    border-radius: 10px;
+}
+
+/* Handle (the draggable part of the scrollbar) */
+::-webkit-scrollbar-thumb {
+    background: #40361780;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #403617b3;
+}
+
+/* where both scrollbars meet */
+::-webkit-scrollbar-corner {
+    background: #181B26;
+}
+
+@keyframes hoverEffect {
+	to {
+		translate: 0px 12px;
+	}
+}
+
+/* ? CARD FLIP ANIMATION when you click a card */
+@keyframes flipZoomIn {
+  0% {
+    transform: rotateY(90deg) scale(0.5);
+    opacity: 0;
+  }
+
+  100% {
+    transform: rotateY(0deg) scale(1);
+    opacity: 1;
+  }
+}
