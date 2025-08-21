@@ -178,6 +178,14 @@ section, .section {
 .tools ul {
   list-style: none;
 }
+.tools ul.second {
+  background: url('../assets/parfum-huit-sacre.jpg') no-repeat center right;
+  background-size: contain;
+}
+.tools ul.first {
+  background: url('../assets/huit-sacre.jpg') no-repeat center right;
+  background-size: contain;
+}
 .tools ul > li {
   clear: left;
 }
