@@ -61,22 +61,32 @@ section, .section {
 .light-background {
     --background-color: #fff;
 }
+.separator, .separator-2 {
+  width: 250px;
+  height: 60px;
+  margin: 0 auto;
+  background-size: contain !important;
+}
+.separator {
+  background: url("../assets/infinity-separator.jpg") no-repeat center center;
+}
+.separator-2 {
+  background: url("../assets/infinity-dark.png") no-repeat center center;
+  margin-bottom: 2rem;
+}
 .hero h1 {
     font-size: var(--xl-font);
     font-family: var(--main-font);
-    color: var(--main-color);
     text-align: center;
     margin-bottom: 1rem;
 }
 .hero p {
     font-size: var(--md-font);
-    color: var(--main-color);
     text-align: center;
     margin-bottom: 1rem;
 }
 .hero .btn-more {
-  border: 1px solid var(--main-color);
-  color: var(--main-color);
+  border: 1px solid #333;
   border-radius: 0.66em;
   padding: .8em 1.4em;
 }
@@ -85,7 +95,6 @@ section, .section {
     position: relative;
     display: flex;
     align-items: center;
-    background: linear-gradient(150deg, #403617, #0E0B26, #000000);
     padding-top: 0;
 }
 .section-title {
@@ -199,11 +208,7 @@ li a {
 }
 /* CTA */
 .section-bg-2 {
-    background: url(../assets/banner.jpg);
-    background-position: top center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
+    
     width: 100%;
     position: relative;
     padding: 110px 0;
@@ -361,14 +366,6 @@ li a {
 }
 
 
-/* ? background PARTICLES */
-#particles-js {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  
-}
 /* stack cards animation */
 .stack {
   position: relative;
@@ -416,7 +413,7 @@ li a {
   transform: translate(-50%,-50%);
 }
 .tcard img {
-  border: 2px solid #eee;
+  border: 2px solid #333;
   border-radius: 15px;
 }
 @keyframes onTop {
