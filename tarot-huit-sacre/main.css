@@ -1,12 +1,12 @@
 :root {
-  --title-font: "Imperial Script", cursive;
+  /*--title-font: "Imperial Script", cursive;*/
   --main-font: "Outfit", sans-serif;
-  --main-color: #d0d0d0;
+  --main-color: #fff;
   --sm-font: 1rem;
   --md-font: 1.5rem;
   --lg-font: 3rem;
   --xl-font: 4rem;
-  --heading-color: #191970;
+  --heading-color: #000;
   --glow-hue: 222deg;
   --shadow-hue: 180deg;
   --spring-easing: linear(
@@ -59,11 +59,11 @@ section, .section {
     overflow: clip;
 }
 .light-background {
-    --background-color: #f9f9f9;
+    --background-color: #fff;
 }
 .hero h1 {
     font-size: var(--xl-font);
-    font-family: var(--title-font);
+    font-family: var(--main-font);
     color: var(--main-color);
     text-align: center;
     margin-bottom: 1rem;
@@ -103,7 +103,7 @@ section, .section {
     display: inline-block;
     text-transform: capitalize;
     border-radius: 50px;
-    font-family: var(--title-font);
+    font-family: var(--main-font);
 }
 .section-title p {
   font-family: var(--main-font);
@@ -163,9 +163,43 @@ section, .section {
 .steps li span {
   display: table-cell;
 }
+.tools p {
+  font-size: var(--md-font);
+}
+.tools ul {
+  list-style: none;
+}
+.tools ul > li {
+  clear: left;
+}
+.tools ul > li:before {
+  content: "";
+  height: 2.5rem;
+  width: 2.5rem;
+  display: block;
+  float: left;
+  margin-left: -1.5rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+.tools ul > li:before {
+  background: url("../assets/check.svg");
+  background-size: cover;
+  background-position: center;
+  padding: .15rem;
+}
+.tools ul > li {
+  font-size: 1.1rem;
+  line-height: 2.5rem;
+}
+li a {
+  text-decoration: underline;
+  display: inline;
+}
 /* CTA */
 .section-bg-2 {
-    background: url(../assets/cta-bg.jpg);
+    background: url(../assets/banner.jpg);
     background-position: top center;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -176,7 +210,7 @@ section, .section {
 }
 .section-bg-overlay {
     width: 100%;
-    background: #191970;
+    background: #01010e;
     opacity: 0.7;
     position: absolute;
     top: 0;
@@ -380,6 +414,10 @@ section, .section {
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
+}
+.tcard img {
+  border: 2px solid #eee;
+  border-radius: 15px;
 }
 @keyframes onTop {
   5% {
