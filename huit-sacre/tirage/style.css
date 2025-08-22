@@ -17,7 +17,10 @@ a {
 :root {
   --title-font: "Imperial Script", cursive;
   --main-font: "DM Sans", sans-serif;
-  --xs-font: 1rem;
+  --xs-font: 0.5rem;
+  --sm-font: 0.75rem;
+  --md-font: 1rem;
+  --lg-font: 2rem;
 }
 
 html,
@@ -190,18 +193,32 @@ button {
 
 .card-front {
   position: relative;
-  background-size: 100% 100%;
   backface-visibility: hidden;
   transform: rotateY(180deg);
   /* flipped default (without reversal) */
-  border: 1px solid #070707;
+  border: 1px solid silver;
+  background: #fff;
 }
 
 .card-front.reversed {
   transform: rotateY(180deg) rotate(180deg);
   /* flipped + reversed */
 }
-
+.card-front .divider {
+  background: url('../../assets/infinity-dark.png') center/contain no-repeat;
+  height: 20px;
+}
+.card-front .name {
+  font-size: var(--md-font);
+}
+.card-front .action {
+  font-size: var(--xs-font);
+  margin-bottom: 0.5rem;
+}
+.card-front .prayer {
+  font-size: var(--sm-font);
+  font-style: italic;
+}
 .card-back {
   display: flex;
   align-items: center;
@@ -291,7 +308,8 @@ button {
   border: 1px solid #4036177a;
 
   backdrop-filter: blur(20px);
-  background: linear-gradient(150deg, #403617b3, #0e0b26b3, #403617b3);
+  /*background: linear-gradient(150deg, #403617b3, #0e0b26b3, #403617b3);*/
+  background: #fff;
   -webkit-backdrop-filter: blur(10px);
 
   padding: 1.1rem;

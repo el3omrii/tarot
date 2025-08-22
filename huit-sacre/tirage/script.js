@@ -163,11 +163,13 @@ function renderDeck() {
 
     card.innerHTML = `
       <div class="card-inner">
-        <div class="card-back">
-        <img src="../../assets/infinity-dark.png" width="100%" height="100%" style="padding-top: 20px; background-color: #fff;"/>
-        <img src="../../cards/${imgSrc}" width="100%" height="100%"/>
+        <div class="card-back" style="background-image: url('../../cards/${imgSrc}"></div>
+        <div class="card-front">
+          <div class="name"></div>
+          <div class="divider"></div>
+          <div class="action"></div>
+          <div class="prayer"></div>
         </div>
-        <div class="card-front"></div>
       </div>
     `;
     // Add click sound effect
@@ -205,9 +207,15 @@ function renderDeck() {
         flipAudio.play();
       }
       const cardFront = card.querySelector(".card-front");
-      const imgSrc = cardFront.style.backgroundImage.slice(5, -2);
-  
-      setTimeout(() => openModal(imgSrc), 2000);
+      const imgSrc = card.querySelector(".card-back").style.backgroundImage.slice(5, -2);
+      console.log(imgSrc);
+      cardFront.querySelector(".name").textContent = cardMeanings[imgSrc.split("/").pop()].name;
+        cardFront.querySelector(".action").textContent = cardMeanings[imgSrc.split("/").pop()].action;
+        cardFront.querySelector(".prayer").textContent = cardMeanings[imgSrc.split("/").pop()].prayer;
+      setTimeout(() => {
+        // Ouvre la modal avec l'image de la carte
+        openModal(imgSrc)
+      }, 2000);
 
     });
     deck.appendChild(card);
