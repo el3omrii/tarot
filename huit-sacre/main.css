@@ -183,8 +183,8 @@ section, .section {
   background-size: contain;
 }
 .tools ul.first {
-  background: url('../assets/huit-sacre.jpg') no-repeat center right;
-  background-size: contain;
+  background: url('../assets/huit-sacre.jpg') no-repeat bottom right;
+  background-size: 20%;
 }
 .tools ul > li {
   clear: left;

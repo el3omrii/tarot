@@ -180,6 +180,7 @@ function renderDeck() {
         if (card.classList.contains("flipped")) {
           const cardFront = card.querySelector(".card-back");
           const imgSrc = cardFront.style.backgroundImage.slice(5, -2);
+          console.log(imgSrc);
           const isReversed = cardFront.classList.contains("reversed");
           openModal(imgSrc, isReversed);
         }
