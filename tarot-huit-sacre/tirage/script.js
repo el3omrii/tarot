@@ -48,8 +48,11 @@ function shuffle(array) {
 function fakeDeck() {
   const deck = document.getElementById("fake-deck");
   deck.innerHTML = "";
-   Array(10).fill().forEach((_, i) => {
+   cardImages.forEach((imgSrc, i) => {
     const card = document.createElement("div");
+    card.innerHTML = `
+      <div style="background-image: url('../../cards/${imgSrc}')">
+      </div>`;
     card.classList.add("card");
     deck.appendChild(card);
    });
@@ -138,8 +141,8 @@ function shuffleDeckAnimation() {
     .add(driftOut(), "<55%")
     .then(() => {
       // After the shuffle animation, remove the fake deck and render the real deck
-      document.getElementById("fake-deck").remove();
-      renderDeck();
+      //document.getElementById("fake-deck").remove();
+      //renderDeck();
     });
 }
 document.addEventListener("DOMContentLoaded", () => {

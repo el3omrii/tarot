@@ -31,8 +31,8 @@ body {
 /* ! padding left & right removed at 768px screen width & below */
 body {
   font-size: 16px;
-  background: #181B26;
-  color: #d0d0d0;
+  background: #fff;
+  color: #181B26;
   font-family: var(--main-font);
   display: flex;
   flex-direction: column;
@@ -203,7 +203,7 @@ button {
 }
 
 .card-back {
-  background: url('../../cards/backcard.png') center/cover;
+  /*background: url('../../cards/backcard.png') center/cover;*/
 }
 #fake-deck {
   display: grid;
@@ -219,7 +219,7 @@ button {
   border-radius: 2.5vmin;
   border: 0.2vmin solid hsl(0 0% 0% / 0.25);
   will-change: transform;
-  background: url('../../cards/backcard.png') center/cover;
+  /*background: url('../../cards/backcard.png') center/cover*/;
 }
 
 .sound-toggle-icon {
