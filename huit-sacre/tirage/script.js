@@ -51,7 +51,7 @@ function fakeDeck() {
    cardImages.forEach((imgSrc, i) => {
     const card = document.createElement("div");
     card.innerHTML = `
-      <div style="background-image: url('../../cards/${imgSrc}')">
+      <div class="deck-card" style="background-image: url('../../cards/${imgSrc}');">
       </div>`;
     card.classList.add("card");
     deck.appendChild(card);
@@ -141,8 +141,8 @@ function shuffleDeckAnimation() {
     .add(driftOut(), "<55%")
     .then(() => {
       // After the shuffle animation, remove the fake deck and render the real deck
-      //document.getElementById("fake-deck").remove();
-      //renderDeck();
+      document.getElementById("fake-deck").remove();
+      renderDeck();
     });
 }
 document.addEventListener("DOMContentLoaded", () => {
@@ -163,9 +163,11 @@ function renderDeck() {
 
     card.innerHTML = `
       <div class="card-inner">
-        <div class="card-back"></div>
-        <div class="card-front"
-         style="background-image: url('../../cards/${imgSrc}')"></div>
+        <div class="card-back">
+        <img src="../../assets/infinity-dark.png" width="100%" height="100%" style="padding-top: 20px; background-color: #fff;"/>
+        <img src="../../cards/${imgSrc}" width="100%" height="100%"/>
+        </div>
+        <div class="card-front"></div>
       </div>
     `;
     // Add click sound effect

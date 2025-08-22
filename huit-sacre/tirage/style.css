@@ -203,7 +203,18 @@ button {
 }
 
 .card-back {
-  /*background: url('../../cards/backcard.png') center/cover;*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 1px solid silver;
+}
+.deck-card {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  border-radius: inherit;
 }
 #fake-deck {
   display: grid;
