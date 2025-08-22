@@ -198,6 +198,10 @@ button {
   /* flipped default (without reversal) */
   border: 1px solid silver;
   background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0.2rem
 }
 
 .card-front.reversed {
@@ -206,10 +210,11 @@ button {
 }
 .card-front .divider {
   background: url('../../assets/infinity-dark.png') center/contain no-repeat;
-  height: 20px;
+  height: 15px;
 }
 .card-front .name {
   font-size: var(--md-font);
+  line-height: 1rem;
 }
 .card-front .action {
   font-size: var(--xs-font);

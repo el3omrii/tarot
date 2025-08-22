@@ -178,7 +178,7 @@ function renderDeck() {
       if (cardDrawn) {      
         // If card is already flipped, open modal with image
         if (card.classList.contains("flipped")) {
-          const cardFront = card.querySelector(".card-front");
+          const cardFront = card.querySelector(".card-back");
           const imgSrc = cardFront.style.backgroundImage.slice(5, -2);
           const isReversed = cardFront.classList.contains("reversed");
           openModal(imgSrc, isReversed);
