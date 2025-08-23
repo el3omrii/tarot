@@ -80,6 +80,13 @@ button {
     align-items: stretch;
     gap: 2rem;
 }
+.accroche {
+  font-size: var(--sm-font);
+  border: 1px solid silver;
+  border-radius: 10px;
+  margin: 0 3rem;
+  padding: 1rem;
+}
 /* ? THE DECK SPREAD */
 #deck {
   --cards: 33;
@@ -87,14 +94,10 @@ button {
   position: relative;
   width: 100%;
   height: 500px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  margin: 0 auto; 
   max-width: 1080px;
-  margin: 1rem auto 0;
-  padding-left: 6rem;
-  padding-right: 0;
   transform-style: preserve-3d;
+  background: url('../../assets/infinity-dark.png') bottom center no-repeat;
 }
 
 #deck .card {
@@ -104,10 +107,9 @@ button {
   aspect-ratio: 3.5 / 5;
   /* Keeps card proportions */
   perspective: 1000px;
-  margin: 0.5rem;
   cursor: pointer;
   position: absolute;
-  top: 60%;
+  top: 50%;
   left: 50%;
   transition: transform 0.25s cubic-bezier(0.4, 0.2, 0.2, 1), filter 0.2s;
   margin-left: -88px;
