@@ -84,7 +84,7 @@ button {
   font-size: var(--sm-font);
   border: 1px solid silver;
   border-radius: 10px;
-  margin: 0 3rem;
+  margin: 0 6rem;
   padding: 1rem;
 }
 /* ? THE DECK SPREAD */
@@ -97,7 +97,17 @@ button {
   margin: 0 auto; 
   max-width: 1080px;
   transform-style: preserve-3d;
+}
+#deck .infinity {
+  position: absolute;
+  top: 98%;
+  left: 48%;
+  width: 100%;
+  height: 70px;
   background: url('../../assets/infinity-dark.png') bottom center no-repeat;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.5s ease-in;
+  opacity: 0;
 }
 
 #deck .card {

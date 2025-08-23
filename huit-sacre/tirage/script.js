@@ -235,6 +235,13 @@ function renderDeck() {
           card.style.scale = ""; // Supprime le style inline transform
           card.style.rotate = ""; // Supprime le style inline transform
           card.style.translate = ""; // Supprime le style inline transform
+          if( i === cardImages.length -1 ) {
+            // Enable all cards after the last animation
+            const logo = document.createElement("div");
+            logo.classList.add("infinity");
+            deck.appendChild(logo);
+            logo.style.opacity = "1";
+          }
         }
       }
     );
