@@ -217,10 +217,13 @@ li a {
 }
 /* CTA */
 .section-bg-2 {
-    
+    background: #000;
     width: 100%;
     position: relative;
     padding: 110px 0;
+}
+.section-bg-2 h2, .section-bg-2 h4 {
+  color: #fff;
 }
 .section-bg-overlay {
     width: 100%;
@@ -538,6 +541,11 @@ li a {
 @media only screen and (max-width: 768px) {
 	.section-title h2, .about .about-content h3 {
     font-size: 2rem;
+  }
+  .tools ul.second {
+    background-position-y: bottom;
+    height: 500px;
+    background-size: auto;
   }
 }
 @media only screen and (max-width: 430px) {
