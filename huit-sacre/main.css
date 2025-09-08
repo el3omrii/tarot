@@ -171,6 +171,7 @@ section, .section {
 }
 .steps li span {
   display: table-cell;
+  text-align: justify;
 }
 .tools p {
   font-size: var(--md-font);
@@ -237,6 +238,11 @@ li a {
 .infinity {
   width: 250px;
   margin-bottom: 2rem
+}
+.citation h4 {
+  font-weight: 300;
+  font-style: italic;
+  margin-top: 2rem;
 }
 @property --shimmer {
     syntax: "<angle>";
@@ -538,4 +544,9 @@ li a {
     top: 40px;
   }
 
+}
+@media only screen and (max-width: 768px) {
+	.section-title h2 {
+    font-size: 2rem;
+  }
 }
