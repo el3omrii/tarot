@@ -540,3 +540,8 @@ li a {
     font-size: 2rem;
   }
 }
+@media only screen and (max-width: 430px) {
+  .btn-more .text, .btn-get-started .text {
+    font-size: var(--sm-font);
+  }
+}
