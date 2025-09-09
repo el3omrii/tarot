@@ -548,7 +548,7 @@ li a {
     background-size: auto;
   }
 }
-@media only screen and (max-width: 430px) {
+@media only screen and (max-width: 480px) {
   .btn-more .text, .btn-get-started .text {
     font-size: var(--sm-font);
   }

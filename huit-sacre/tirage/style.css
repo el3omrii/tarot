@@ -462,7 +462,7 @@ button {
     opacity: 1;
   }
 }
-@media screen and (max-width: 768px) {
+@media only screen and (max-width: 768px) {
   #deck .infinity {
     top: 62%;
     left: -4%;
@@ -471,5 +471,21 @@ button {
   #deck > .card {
     transform-origin: 50% 90px;
     transform: rotate(var(--angle)) translateY(-180px) ;
+  }
+}
+@media only screen and (max-width: 480px) {
+  #deck .infinity {
+    top: 58%;
+    left: -10%;
+    height: 60px;
+  } 
+  #deck > .card {
+    transform-origin: 50% 60px;
+    transform: rotate(var(--angle)) translateY(-160px) ;
+  }
+  #deck .card {
+    width: 18vw;
+    max-width: 110px;
+    min-width: 90px;
   }
 }
