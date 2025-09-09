@@ -93,18 +93,18 @@ button {
   --curvature: 360deg;
   position: relative;
   width: 100%;
-  height: 500px;
+  height: 100vw;
   margin: 0 auto; 
   max-width: 1080px;
   transform-style: preserve-3d;
 }
 #deck .infinity {
   position: absolute;
-  top: 98%;
-  left: 48%;
+  top: 50%;
+  left: 50%;
   width: 100%;
-  height: 70px;
-  background: url('../../assets/infinity-dark.png') bottom center no-repeat;
+  height: 100px;
+  background: url('../../assets/infinity-full.png') center/contain no-repeat;
   transform: translate(-50%, -50%);
   transition: opacity 0.5s ease-in;
   opacity: 0;

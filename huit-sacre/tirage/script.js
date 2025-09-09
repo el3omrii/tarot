@@ -314,8 +314,8 @@ const SOUND_ON_ICON = "../../assets/sound-on.svg";
 const SOUND_OFF_ICON = "../../assets/sound-off.svg";
 
 // Load preference from localStorage if available
-if (localStorage.getItem("mysticDrawSound") !== null) {
-  soundEnabled = localStorage.getItem("mysticDrawSound") === "true";
+if (localStorage.getItem("drawSound") !== null) {
+  soundEnabled = localStorage.getItem("drawSound") === "true";
 }
 updateSoundIcon();
 
