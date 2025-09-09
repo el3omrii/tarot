@@ -142,6 +142,7 @@ function shuffleDeckAnimation() {
     .then(() => {
       // After the shuffle animation, remove the fake deck and render the real deck
       document.getElementById("fake-deck").remove();
+      //document.getElementById("deck").style.height = "100vw";
       renderDeck();
     });
 }
