@@ -29,7 +29,6 @@ body {
   overflow-x: hidden;
   min-height: 100vh;
   position: relative;
-  font-family: var(--main-font);
 }
 
 /* ! padding left & right removed at 768px screen width & below */
@@ -382,7 +381,6 @@ button {
 .meaning-prayer {
   font-size: 1.1rem;
   margin-bottom: 0.5rem;
-  font-weight: bold;
 }
 .meaning-prayer {
   font-style: italic;
@@ -391,10 +389,12 @@ button {
 .meaning-action::before {
   content: "Action : ";
   color: #e9b368;
+  font-weight: bold;
 }
 .meaning-prayer::before {
   content: "Prière : ";
   color: #e9b368;
+  font-weight: bold;
 }
 
 
