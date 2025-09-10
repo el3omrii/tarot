@@ -174,6 +174,11 @@ button {
   animation: hoverEffect 1s ease-in-out infinite alternate forwards;
 }
 
+#deck .card.flipped {
+  top: 50%;
+  left: calc(50% + 60px);
+  transform: translate(-50%, -50%) !important;
+}
 .card-inner {
   width: 100%;
   height: 100%;
@@ -183,7 +188,7 @@ button {
 }
 
 .card.flipped .card-inner {
-  transform: rotateY(180deg) rotate(var(--angle));
+  transform: rotateY(180deg) scale(1.5);
   border: 2px solid silver;
   border-radius: 10px;
 }
@@ -471,10 +476,6 @@ button {
   #deck .card:hover {
     transform: rotate(var(--angle)) translateY(calc(-180px - 30px)) scale(1.2);
   }
-  #deck .card.flipped {
-    top: 80%;
-    left: 58%;
-  }
 }
 @media only screen and (max-width: 480px) {
   #deck .infinity {
@@ -493,9 +494,5 @@ button {
   }
   #deck .card:hover {
     transform: rotate(var(--angle)) translateY(calc(-180px - 20px)) scale(1.2);
-  }
-  #deck .card.flipped {
-    top: 80%;
-    left: 60%;
   }
 }
