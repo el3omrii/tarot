@@ -74,12 +74,6 @@ button {
   font-size: 4rem;
   letter-spacing: 0.1rem;
 }
-.container .main-content {
-    display: flex;
-    justify-content: center;
-    align-items: stretch;
-    gap: 2rem;
-}
 .accroche {
   font-size: var(--sm-font);
   border: 1px solid silver;
@@ -93,15 +87,15 @@ button {
   --curvature: 360deg;
   position: relative;
   width: 100%;
-  height: 500px;
+  height: 600px;
   margin: 0 auto; 
   max-width: 1080px;
   transform-style: preserve-3d;
 }
 #deck .infinity {
   position: absolute;
-  top: 95%;
-  left: 45%;
+  top: 73%;
+  left: 0%;
   width: 100%;
   height: 100px;
   background: url('../../assets/infinity-full.png') center/contain no-repeat;
@@ -119,10 +113,10 @@ button {
   perspective: 1000px;
   cursor: pointer;
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transition: transform 0.25s cubic-bezier(0.4, 0.2, 0.2, 1), filter 0.2s;
-  margin-left: -88px;
+  margin-left: -60px;
   margin-bottom: -70px;
   
   -webkit-tap-highlight-color: transparent;
@@ -190,6 +184,8 @@ button {
 
 .card.flipped .card-inner {
   transform: rotateY(180deg) rotate(var(--angle));
+  border: 2px solid silver;
+  border-radius: 10px;
 }
 
 .card-front,
@@ -462,21 +458,28 @@ button {
     opacity: 1;
   }
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (min-width: 480px) and (max-width: 768px) {
   #deck .infinity {
-    top: 62%;
-    left: -4%;
+    top: 52%;
+    left: 0%;
     height: 60px;
   } 
   #deck > .card {
     transform-origin: 50% 90px;
     transform: rotate(var(--angle)) translateY(-180px) ;
   }
+  #deck .card:hover {
+    transform: rotate(var(--angle)) translateY(calc(-180px - 30px)) scale(1.2);
+  }
+  #deck .card.flipped {
+    top: 80%;
+    left: 58%;
+  }
 }
 @media only screen and (max-width: 480px) {
   #deck .infinity {
-    top: 58%;
-    left: -10%;
+    top: 47%;
+    left: -3%;
     height: 60px;
   } 
   #deck > .card {
@@ -487,5 +490,12 @@ button {
     width: 18vw;
     max-width: 110px;
     min-width: 90px;
+  }
+  #deck .card:hover {
+    transform: rotate(var(--angle)) translateY(calc(-180px - 20px)) scale(1.2);
+  }
+  #deck .card.flipped {
+    top: 80%;
+    left: 60%;
   }
 }
