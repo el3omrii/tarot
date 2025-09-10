@@ -382,14 +382,18 @@ button {
 .meaning-prayer {
   font-size: 1.1rem;
   margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+.meaning-prayer {
+  font-style: italic;
 }
 
 .meaning-action::before {
-  content: "Action: ";
+  content: "Action : ";
   color: #e9b368;
 }
 .meaning-prayer::before {
-  content: "Prière: ";
+  content: "Prière : ";
   color: #e9b368;
 }
 
