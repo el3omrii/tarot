@@ -218,6 +218,7 @@ function renderDeck() {
         // Ouvre la modal avec l'image de la carte
         openModal(imgSrc)
       }, 2000);
+      document.getElementById("replay").style.opacity = "1";
 
     });
     deck.appendChild(card);

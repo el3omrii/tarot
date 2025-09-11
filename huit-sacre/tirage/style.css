@@ -426,6 +426,65 @@ button {
 .close-button:active {
   color: #6d6d6d;
 }
+/* Replay Button */
+#replay {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  border: 2px solid #000;
+  border-radius: 5px;
+  width: 200px;
+  font-size: 1rem;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  opacity: 0;
+}
+.reload {
+  height: 2em;
+  padding: 0.25em;
+  width: 2em;
+  display: inline-block;
+  position: relative;
+  -webkit-animation: rotate 1.5s linear infinite;
+  animation: rotate 6s linear infinite;
+}
+.reload:before, .reload:after {
+  content: "";
+  display: block;
+  -webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.reload:before {
+  border-color: transparent black black black;
+  border-radius: 50%;
+  border-style: solid;
+  border-width: 0.125em;
+  height: 1.5em;
+  width: 1.5em;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.reload:after {
+  border-color: transparent transparent transparent black;
+  border-style: solid;
+  border-width: 0.3125em 0 0.3125em 0.5em;
+  height: 0;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 0;
+}
+
+@keyframes rotate {
+  0%, 40% {
+    transform: rotate(0deg);
+  }
+  60%, 100% {
+    transform: rotate(360deg);
+  }
+}
 /* Target the scrollbar */
 ::-webkit-scrollbar {
     width: 12px;
@@ -505,7 +564,7 @@ button {
     transform: rotate(var(--angle)) translateY(calc(-180px - 20px)) scale(1.2);
   }
   .modal-content img {
-    max-width: 160px;
+    max-width: 120px;
     max-height: 60vh;
   }
 }
