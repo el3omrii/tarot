@@ -431,7 +431,6 @@ button {
   display: flex;
   gap: 1rem;
   padding: 1rem 2rem;
-  border: 2px solid #000;
   border-radius: 5px;
   width: 200px;
   font-size: 1rem;
@@ -439,6 +438,8 @@ button {
   justify-content: center;
   margin: 0 auto;
   opacity: 0;
+  background: linear-gradient(90deg, rgba(217, 217, 217, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(189, 189, 185, 1) 100%);
+  box-shadow: 0 2px 3px 1px hsl(var(--glow-hue) 50% 20% / 50%), inset 0 -10px 20px -10px hsla(var(--shadow-hue), 10%, 90%, 95%);
 }
 .reload {
   height: 2em;
