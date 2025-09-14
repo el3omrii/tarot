@@ -37,6 +37,7 @@ const cardImages = [
   "32.jpg",
   "33.jpg"   
 ];
+let cardMeaning = {};
 // This function uses the Fisher-Yates algorithm to shuffle the array in place.
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -211,7 +212,7 @@ function renderDeck() {
       const cardFront = card.querySelector(".card-front");
       const imgSrc = card.querySelector(".card-back").style.backgroundImage.slice(5, -2);
       let params = new URLSearchParams(document.location.search);
-      const cardMeaning = await fetch(`https://oracle-api-lovat.vercel.app/api/cards?token=${params.get('token')}&card=${imgSrc.split('/').pop()}`)
+      cardMeaning = await fetch(`https://oracle-api-lovat.vercel.app/api/cards?token=${params.get('token')}&card=${imgSrc.split('/').pop()}`)
                                 .then(response => response.json())
       cardFront.querySelector(".name").textContent = cardMeaning.name;
       cardFront.querySelector(".action").textContent = cardMeaning.action;
@@ -265,19 +266,18 @@ function openModal(imgSrc, isReversed = false) {
 
   // Extract card filename
   const cardFile = imgSrc.split("/").pop();
-  const meaning = cardMeanings[cardFile];
 
   // Set card name and meanings
   const cardNameElem = document.getElementById("card-name");
   const actionElem = document.getElementById("meaning-action");
   const prayerElem = document.getElementById("meaning-prayer");
 
-  if (meaning) {
-    cardNameElem.textContent = meaning.name;
-    actionElem.textContent = meaning.action;
+  if (cardMeaning) {
+    cardNameElem.textContent = cardMeaning.name;
+    actionElem.textContent = cardMeaning.action;
     actionElem.style.display = "block";
 
-    prayerElem.textContent = meaning.prayer;
+    prayerElem.textContent = cardMeaning.prayer;
     prayerElem.style.display = "block";
   } else {
     actionElem.textContent = "";
