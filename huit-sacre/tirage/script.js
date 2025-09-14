@@ -211,7 +211,7 @@ function renderDeck() {
       const cardFront = card.querySelector(".card-front");
       const imgSrc = card.querySelector(".card-back").style.backgroundImage.slice(5, -2);
       let params = new URLSearchParams(document.location.search);
-      const cardMeaning = await fetch(`oracle-api-lovat.vercel.app/api/cards?token=${params.get('token')}&card=${imgSrc.split('/').pop()}`)
+      const cardMeaning = await fetch(`https://oracle-api-lovat.vercel.app/api/cards?token=${params.get('token')}&card=${imgSrc.split('/').pop()}`)
       cardFront.querySelector(".name").textContent = cardMeaning.name;
       cardFront.querySelector(".action").textContent = cardMeaning.action;
       cardFront.querySelector(".prayer").textContent = cardMeaning.prayer;
