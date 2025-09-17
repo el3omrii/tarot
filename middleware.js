@@ -15,7 +15,7 @@ export const config = {
 // Token verification middleware
 export default async function middleware(request) {
   const url = new URL(request.url);
-  const apiUrl = "https://oracleapi.rhiyourhi-lila.com/api/tokens/validate";
+  const apiUrl = new URL("https://oracleapi.rhiyourhi-lila.com/api/tokens/validate");
   const redirectUrl = "https://rhiyourhi-lila.com";
   
 
