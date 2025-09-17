@@ -17,11 +17,9 @@ export default async function middleware(request) {
   const url = new URL(request.url);
   const apiUrl = new URL("https://oracleapi.rhiyourhi-lila.com/api/tokens/validate");
   const redirectUrl = "https://rhiyourhi-lila.com";
-  
 
   // Check if we have a valid token in query parameters or cookies
   const token = url.searchParams.get('token') || getCookie(request, 'auth-token');
-    console.log(token);
   // If no token found, redirect to error page
   if (!token) {
     return redirectResponse(redirectUrl);
@@ -38,16 +36,24 @@ export default async function middleware(request) {
     });
 
     if (response.ok) {
-      // Token is valid - proceed with request and set cookie for future requests
-      const headers = new Headers();
-      setCookie(headers, 'auth-token', token, { 
-        maxAge: 60 * 60 * 24 // 1 day
+      // Token is valid - fetch the original requested page
+      const pageResponse = await fetch(request);
+      
+      // Create response with the page content
+      const response = new Response(pageResponse.body, {
+        status: pageResponse.status,
+        statusText: pageResponse.statusText,
+        headers: pageResponse.headers
       });
       
-      return new Response(null, {
-        status: 200,
-        headers
+      // Set auth cookie for future requests
+      setCookie(response.headers, 'auth-token', token, {
+        maxAge: 60 * 60 * 24, // 1 day
+        path: '/',
+        secure: true,
+        httpOnly: true
       });
+      return response;
     } else {
       // Token is invalid
       return redirectResponse(redirectUrl);
