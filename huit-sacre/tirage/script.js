@@ -2,7 +2,6 @@ let flipCount = 0;
 const deck = document.getElementById("deck");
 // Array of card image paths
 const cardImages = [
-  // Major Arcana
   "01.jpg",
   "02.jpg",
   "03.jpg",
@@ -212,7 +211,8 @@ function renderDeck() {
       const cardFront = card.querySelector(".card-front");
       const imgSrc = card.querySelector(".card-back").style.backgroundImage.slice(5, -2);
       let params = new URLSearchParams(document.location.search);
-      cardMeaning = await fetch(`https://oracle-api-lovat.vercel.app/api/cards?token=${params.get('token')}&card=${imgSrc.split('/').pop()}`)
+      const token = params.get('token') || getCookie('auth-token');
+      cardMeaning = await fetch(`https://oracle-api-lovat.vercel.app/api/cards?token=${token}&card=${imgSrc.split('/').pop()}`)
                                 .then(response => response.json())
       cardFront.querySelector(".name").textContent = cardMeaning.name;
       cardFront.querySelector(".action").textContent = cardMeaning.action;
@@ -338,4 +338,18 @@ function updateSoundIcon() {
     soundIconImg.src = SOUND_OFF_ICON;
     soundIconImg.alt = "Sound Off";
   }
+}
+// Helper function to get cookie value from request
+function getCookie(request, name) {
+  const cookieHeader = request.headers.get('Cookie');
+  if (!cookieHeader) return null;
+  
+  const cookies = cookieHeader.split(';');
+  for (const cookie of cookies) {
+    const [cookieName, cookieValue] = cookie.split('=').map(c => c.trim());
+    if (cookieName === name) {
+      return decodeURIComponent(cookieValue);
+    }
+  }
+  return null;
 }
