@@ -340,16 +340,17 @@ function updateSoundIcon() {
   }
 }
 // Helper function to get cookie value from request
-function getCookie(request, name) {
-  const cookieHeader = request.headers.get('Cookie');
-  if (!cookieHeader) return null;
-  
-  const cookies = cookieHeader.split(';');
-  for (const cookie of cookies) {
-    const [cookieName, cookieValue] = cookie.split('=').map(c => c.trim());
-    if (cookieName === name) {
-      return decodeURIComponent(cookieValue);
+function getCookie(name) {
+  const nameEQ = name + "=";
+  const ca = document.cookie.split(';');
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) === ' ') {
+      c = c.substring(1, c.length);
+    }
+    if (c.indexOf(nameEQ) === 0) {
+      return decodeURIComponent(c.substring(nameEQ.length, c.length));
     }
   }
-  return null;
+  return null; // Or an empty string, depending on desired behavior for missing cookies
 }
