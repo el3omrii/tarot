@@ -16,7 +16,7 @@ export const config = {
 export default async function middleware(request) {
   const url = new URL(request.url);
   const apiUrl = new URL("https://oracleapi.rhiyourhi-lila.com/api/tokens/validate");
-  const redirectUrl = "https://rhiyourhi-lila.com";
+  const redirectUrl = "https://www.rhiyourhi-lila.com/product-page/oracle-huit-sacr%C3%A9";
 
   // Check if we have a valid token in query parameters or cookies
   const token = url.searchParams.get('token') || getCookie(request, 'auth-token');
