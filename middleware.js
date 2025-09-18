@@ -51,7 +51,7 @@ export default async function middleware(request) {
         maxAge: 60 * 60 * 24, // 1 day
         path: '/',
         secure: true,
-        httpOnly: true,
+        httpOnly: false,
         sameSite: 'none'
       });
       return response;
