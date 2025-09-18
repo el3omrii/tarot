@@ -384,16 +384,17 @@ button {
 }
 .meaning-prayer {
   font-style: italic;
+  font-weight: 700;
 }
 
 .meaning-action::before {
   content: "Action : ";
-  color: #e9b368;
+  color: goldenrod;
   font-weight: bold;
 }
 .meaning-prayer::before {
   content: "Prière : ";
-  color: #e9b368;
+  color: goldenrod;
   font-weight: bold;
 }
 
