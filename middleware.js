@@ -70,6 +70,14 @@ export default async function middleware(request) {
 function redirectResponse(path) {
   const headers = new Headers();
   headers.set('Location', path);
+  // Remove the auth cookie by setting it with expired date
+  const cookieParts = [
+    'auth-token=',
+    'Path=/',
+    'Expires=Thu, 01 Jan 1970 00:00:00 GMT', // Expire in the past
+    'Max-Age=0' // Immediately expire
+  ];
+  headers.append('Set-Cookie', cookieParts.join('; '));
   return new Response(null, {
     status: 307,
     headers
