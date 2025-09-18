@@ -548,12 +548,12 @@ button {
 }
 @media only screen and (max-width: 480px) {
   #deck .infinity {
-    top: 47%;
+    top: 45%;
     left: 2%;
     height: 60px;
   } 
   #deck > .card {
-    transform-origin: 50% 60px;
+    transform-origin: 50% 50px;
     transform: rotate(var(--angle)) translateY(-160px) ;
   }
   #deck .card {
