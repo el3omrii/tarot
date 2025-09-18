@@ -164,7 +164,7 @@ function renderDeck() {
 
     card.innerHTML = `
       <div class="card-inner">
-        <div class="card-back" style="background-image: url('../../cards/${imgSrc}"></div>
+        <div class="card-back" style="background-image: url('../../cards/${imgSrc}')"></div>
         <div class="card-front">
           <div class="name"></div>
           <div class="divider"></div>
