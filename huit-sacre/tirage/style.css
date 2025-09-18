@@ -549,7 +549,7 @@ button {
 @media only screen and (max-width: 480px) {
   #deck .infinity {
     top: 47%;
-    left: -3%;
+    left: 2%;
     height: 60px;
   } 
   #deck > .card {
