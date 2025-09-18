@@ -561,6 +561,9 @@ button {
     max-width: 90px;
     min-width: 65px;
   }
+  #deck .card.flippe {
+    left: calc(50% + 40px);
+  }
   #deck .card:hover {
     transform: rotate(var(--angle)) translateY(calc(-180px - 20px)) scale(1.2);
   }
